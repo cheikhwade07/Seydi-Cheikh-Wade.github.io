@@ -7,7 +7,7 @@
     'use strict';
 
     const GITHUB_USERNAME = 'cheikhwade07';
-    const EXCLUDED_REPOS = ['cheikhwade07', 'projectweb', 'Spotify_playlist_downloader', 'Text-Based-Facebook'];
+    const EXCLUDED_REPOS = ['cheikhwade07', 'projectweb', 'Spotify_playlist_downloader', 'Text-Based-Facebook', 'SYSC-4001', 'SYSC4001', 'java-app', 'Java-App'];
     const MAX_REPOS = 12;
     const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&direction=desc&per_page=100`;
 

@@ -45,6 +45,7 @@
 			<ul class="links">
 				<li class="active"><a href="index.html">Home</a></li>
 				<li><a href="#about">About</a></li>
+				<li><a href="#experience">Experience</a></li>
 				<li><a href="#projects">Projects</a></li>
 				<li><a href="#skills">Skills</a></li>
 				<li><a href="#contact">Contact</a></li>
@@ -91,6 +92,32 @@
 						Relevant Coursework: Object-Oriented Programming, Data Structures & Algorithms, Database
 						Systems,
 						Machine Learning, Software Design, Systems Programming, API Development</p>
+				</div>
+			</article>
+
+			<!-- Work Experience Section -->
+			<article class="post" id="experience">
+				<header class="major">
+					<h2><a href="#experience">Work Experience</a></h2>
+				</header>
+				<div style="text-align: left; max-width: 800px; margin: 0 auto;">
+					<h3>Software Engineering Role</h3>
+					<p><strong>Jasmine Conseil</strong> | [Location]<br />
+						[Date Range]</p>
+					<ul style="list-style: disc; margin-left: 1.5rem; margin-top: 1rem;">
+						<li>Developed and maintained backend services using FastAPI, implementing RESTful API endpoints
+							with request/response validation via Pydantic models</li>
+						<li>Designed and optimized database schemas using PostgreSQL, ensuring data integrity through
+							normalization and constraint enforcement</li>
+						<li>Implemented API proxies and governance policies using MuleSoft Anypoint Platform, enabling
+							secure access control and routing</li>
+						<li>Deployed applications to cloud platforms including DigitalOcean and Render, configuring
+							Linux VMs, firewalls, and CI/CD pipelines</li>
+						<li>Collaborated using Agile methodologies, tracking tasks in Jira and documenting technical
+							architecture in Confluence</li>
+						<li>Conducted API testing using Postman and curl, ensuring reliability and performance of
+							backend services</li>
+					</ul>
 				</div>
 			</article>
 
@@ -173,6 +200,69 @@
 
 			<!-- Posts -->
 			<section class="posts">
+				<!-- Database Management Project -->
+				<article>
+					<header class="major">
+						<h2><a href="[GitHub URL]" target="_blank">Database Management<br />
+								System</a></h2>
+					</header>
+					<a href="[GitHub URL]" class="image fit" target='_blank'>
+						<img src="images/code-459070_1280.webp" alt="Database Management System Project" />
+					</a>
+					<p>Designed and implemented a comprehensive database management system to handle complex relational
+						data with optimized query performance. The system enforces data integrity through normalization
+						(1NF-3NF), primary and foreign key constraints, and supports one-to-many and many-to-many
+						relationships.</p>
+					<ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem;">
+						<li>Architected relational database schema using PostgreSQL with proper normalization and
+							integrity constraints</li>
+						<li>Optimized SQL queries using JOINs, aggregations, and indexing strategies for improved
+							performance</li>
+						<li>Implemented ORM-based data access layer with entity mapping and constraint enforcement at
+							application level</li>
+						<li>Developed role-based data access controls ensuring secure CRUD operations without raw SQL
+							exposure</li>
+					</ul>
+					<ul class="actions special">
+						<li><a href="[GitHub URL]" class="button" target="_blank">View on GitHub</a></li>
+					</ul>
+					<div style="margin-top: 1rem;">
+						<strong>Technologies:</strong> PostgreSQL, SQL, ORM, Python/Java
+					</div>
+				</article>
+
+				<!-- Custom Risk Prediction API -->
+				<article>
+					<header class="major">
+						<h2><a href="[GitHub URL]" target="_blank">Custom Risk Prediction<br />
+								API</a></h2>
+					</header>
+					<a href="[GitHub URL]" class="image fit" target='_blank'>
+						<img src="images/code-459070_1280.webp" alt="Custom Risk Prediction API Project" />
+					</a>
+					<p>Built a production-ready machine learning API for statistical risk scoring using supervised
+						learning models. The system processes raw data through preprocessing pipelines, applies feature
+						engineering, and serves predictions via RESTful endpoints with comprehensive model evaluation
+						metrics.</p>
+					<ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem;">
+						<li>Developed FastAPI backend with Pydantic validation, Swagger/OpenAPI documentation, and error
+							handling for model inference services</li>
+						<li>Implemented ML pipeline using scikit-learn with Logistic Regression, XGBoost, and MLP
+							models, achieving optimized F1-score and ROC-AUC metrics</li>
+						<li>Engineered data preprocessing workflows handling missing values, categorical encoding, and
+							feature selection with PCA for dimensionality reduction</li>
+						<li>Deployed API to cloud platform (Render/DigitalOcean) with Uvicorn server, enabling scalable
+							model serving and monitoring</li>
+					</ul>
+					<ul class="actions special">
+						<li><a href="[GitHub URL]" class="button" target="_blank">View on GitHub</a></li>
+					</ul>
+					<div style="margin-top: 1rem;">
+						<strong>Technologies:</strong> FastAPI, Python, scikit-learn, pandas, NumPy, PostgreSQL,
+						Render/DigitalOcean
+					</div>
+				</article>
+
 				<!-- Spotify Playlist Downloader -->
 				<article>
 					<header class="major">
@@ -184,43 +274,23 @@
 						target='_blank'>
 						<img src="images/unnamed.png" alt="Spotify Playlist Downloader Project" />
 					</a>
-					<p>Using APIs like PyTube and Spotipy, I created a script that lets you choose
-						which Spotify playlist you'd like to download and specify the location on your PC for the
-						downloads.
-						The script retrieves the playlist data and automatically downloads each song from YouTube into a
-						newly
-						created folder named after the playlist.</p>
+					<p>Developed an automated playlist management tool that integrates multiple APIs to streamline music
+						download workflows. The application retrieves playlist metadata from Spotify and sources audio
+						content from YouTube, organizing downloads into structured directories.</p>
+					<ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem;">
+						<li>Integrated Spotify Web API (Spotipy) and YouTube Data API (PyTube) to fetch playlist data
+							and media content</li>
+						<li>Implemented file system automation for dynamic folder creation and batch download processing
+						</li>
+						<li>Designed modular architecture with error handling for API rate limits and network failures
+						</li>
+					</ul>
 					<ul class="actions special">
 						<li><a href="https://github.com/cheikhwade07/Spotify_playlist_downloader" class="button"
 								target="_blank">View on GitHub</a></li>
 					</ul>
 					<div style="margin-top: 1rem;">
 						<strong>Technologies:</strong> Python, Spotipy API, PyTube API
-					</div>
-				</article>
-
-				<!-- Text-Based Facebook -->
-				<article>
-					<header class="major">
-						<h2><a href="https://github.com/cheikhwade07/Text-Based-Facebook" target="_blank">Text-Based
-								Facebook<br />
-								in C</a></h2>
-					</header>
-					<a href="https://github.com/cheikhwade07/Text-Based-Facebook" class="image fit" target='_blank'>
-						<img src="images/Screenshot 2025-01-13 004242.png" alt="Text-Based Facebook Project" />
-					</a>
-					<p>In my Foundations of Imperative Programming course at Carleton University, I was asked to create
-						a
-						text-based Facebook interface using different data structures. This assignment tested my
-						understanding
-						of pointers and memory allocation and my ability to use those concepts to complete the assigned
-						task.</p>
-					<ul class="actions special">
-						<li><a href="https://github.com/cheikhwade07/Text-Based-Facebook" class="button"
-								target="_blank">View on GitHub</a></li>
-					</ul>
-					<div style="margin-top: 1rem;">
-						<strong>Technologies:</strong> C, Data Structures, Memory Management
 					</div>
 				</article>
 
