@@ -49,7 +49,7 @@ export const experience: Experience[] = [
     company: 'Jasmine Conseil',
     location: 'Laval, QC',
     duration: 'June 23, 2025 - September 5, 2025 (2.5 months)',
-    logo: '/images/Jasmine Conseil.png',
+    logo: './images/Jasmine Conseil.png',
     projectDescription:
       'ML prediction system for customs risk analysis in partnership with Senegalese Customs Administration (contributes 40% of national budget)',
     responsibilities: [
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     description: 'ML System for Senegalese Customs',
     longDescription:
       'Built during 2.5-month internship at Jasmine Conseil in partnership with the Senegalese Customs Administration (contributes 40% of national budget). Developed an ML-powered prototype to predict customs control circuits (Green/Orange/Red) for import declarations, automating risk assessment to accelerate processing and improve fraud detection.',
-    image: '/images/Gemini_Generated_Image_gqobk9gqobk9gqob.png',
+    image: './images/Gemini_Generated_Image_gqobk9gqobk9gqob.png',
     techStack: [
       'Python 3.9',
       'scikit-learn',
@@ -247,7 +247,7 @@ export const projects: Project[] = [
     description: 'Database Engineering & Backend Systems',
     longDescription:
       'Relational database system for health and fitness club operations, emphasizing normalized schema design, constraint enforcement, and business logic implementation beyond basic CRUD operations.',
-    image: '/images/Gemini_Generated_Image_1tnizw1tnizw1tni.png',
+    image: './images/Gemini_Generated_Image_1tnizw1tnizw1tni.png',
     techStack: ['PostgreSQL', 'SQL', 'ORM', 'Database Design', 'Normalization'],
     githubUrl: 'https://github.com/cheikhwade07/Health-and-Fitness-Club-Management-System.git',
     featured: false,
@@ -279,7 +279,7 @@ export const projects: Project[] = [
     description: 'Database Systems & Computer Science Fundamentals',
     longDescription:
       'Relational algebra query processor in Java, implementing database systems theory as working code. Demonstrates query execution pipeline from parsing to in-memory execution, bridging SQL operations to their underlying mathematical foundations.',
-    image: '/images/code-459070_1280.webp',
+    image: './images/code-459070_1280.webp',
     techStack: [
       'Java',
       'Object-Oriented Design',
@@ -308,7 +308,7 @@ export const projects: Project[] = [
     description: 'Java & MVC Architecture',
     longDescription:
       'Full-scale UNO game implementation in Java demonstrating production-ready software engineering practices. Built using Model-View-Controller pattern to separate game logic from UI, with emphasis on maintainability, extensibility, and real-time game state management.',
-    image: '/images/uno-game-placeholder.jpg',
+    image: './images/uno-game-placeholder.jpg',
     techStack: [
       'Java',
       'MVC Architecture',

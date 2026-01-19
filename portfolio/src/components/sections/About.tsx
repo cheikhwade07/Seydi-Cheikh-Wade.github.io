@@ -19,7 +19,7 @@ export default function About() {
           >
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/images/WADE, SEYDI CHEIKH (BUSINESS SPECIAL) (3).JPG"
+                src="./images/WADE, SEYDI CHEIKH (BUSINESS SPECIAL) (3).JPG"
                 alt={personalInfo.name}
                 className="w-full h-auto object-cover"
               />
