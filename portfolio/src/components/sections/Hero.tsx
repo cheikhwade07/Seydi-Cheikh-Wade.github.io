@@ -1,106 +1,96 @@
 import { motion } from 'framer-motion'
-import { FaArrowDown } from 'react-icons/fa'
-import { personalInfo } from '../../data/content'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { HiChevronDown } from 'react-icons/hi'
+import { personalInfo, contactInfo } from '../../data/content'
 
 export default function Hero() {
-  const handleScrollDown = () => {
-    const aboutSection = document.querySelector('#about')
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center bg-primary-dark relative overflow-hidden"
-    >
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-dark via-primary-dark to-primary/20" />
-
-      {/* Animated background shapes */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.5, 0.3, 0.5],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-
-      <div className="container-narrow mx-auto px-4 text-center relative z-10">
-        {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+    <section id="home" className="min-h-screen flex flex-col">
+      {/* Photo Section - Top half */}
+      <div className="flex-1 bg-white flex items-end justify-center relative overflow-hidden pt-20">
+        {/* Photo */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl md:text-5xl lg:text-7xl font-bold text-text-light mb-4"
+          transition={{ duration: 0.6 }}
+          className="relative z-20"
         >
-          {personalInfo.name}
-        </motion.h1>
+          <img
+            src="./images/WADE, SEYDI CHEIKH (BUSINESS SPECIAL) (3).JPG"
+            alt={personalInfo.name}
+            className="w-96 md:w-[28rem] lg:w-[34rem] xl:w-[40rem] h-auto object-cover"
+          />
+        </motion.div>
+      </div>
 
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl lg:text-3xl text-primary font-medium mb-6"
-        >
-          {personalInfo.title}
-        </motion.h2>
-
-        {/* University & Year */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg md:text-xl text-text-light/80 mb-4"
-        >
-          {personalInfo.university} | {personalInfo.year}
-        </motion.p>
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-md md:text-lg text-text-light/60 mb-12"
-        >
-          {personalInfo.tagline}
-        </motion.p>
-
-        {/* Scroll indicator */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          onClick={handleScrollDown}
-          className="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-text-light/30 text-text-light/50 hover:border-primary hover:text-primary transition-colors cursor-pointer"
-          aria-label="Scroll to about section"
-        >
+      {/* Name Section - Bottom half */}
+      <div className="bg-[#2d3748] px-6 py-12 md:py-16 relative">
+        <div className="max-w-4xl mx-auto">
+          {/* Name with accent bar */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex items-start"
           >
-            <FaArrowDown size={20} />
+            {/* Vertical accent bar */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="w-1.5 bg-primary rounded-full mr-6 self-stretch origin-top"
+              style={{ minHeight: '180px' }}
+            />
+
+            <div>
+              {/* Name - Large and bold */}
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-text-light leading-none tracking-tight">
+                {personalInfo.name.split(' ')[0]}
+                <br />
+                {personalInfo.name.split(' ').slice(1).join(' ')}
+                <span className="text-primary">.</span>
+              </h1>
+
+              {/* Social links */}
+              <div className="flex items-center gap-5 mt-6">
+                <a
+                  href={contactInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-light/40 hover:text-text-light transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin size={28} />
+                </a>
+                <a
+                  href={contactInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-light/40 hover:text-text-light transition-colors"
+                  aria-label="GitHub"
+                >
+                  <FaGithub size={28} />
+                </a>
+              </div>
+            </div>
           </motion.div>
-        </motion.button>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex justify-center mt-10"
+          >
+            <a
+              href="#about"
+              className="text-text-light/40 hover:text-text-light transition-colors"
+              aria-label="Scroll down"
+            >
+              <HiChevronDown size={32} className="animate-bounce" />
+            </a>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

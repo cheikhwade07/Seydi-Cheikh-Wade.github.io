@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa'
-import { navLinks, contactInfo } from '../../data/content'
+import { navLinks, contactInfo, personalInfo } from '../../data/content'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -26,15 +26,15 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-primary-dark/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-primary-dark/95 backdrop-blur-sm shadow-lg' : 'bg-[#2d3748] shadow-md'
       }`}
     >
-      <nav className="container-wide mx-auto px-4 py-4">
+      <nav className="container-wide mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.a
             href="#home"
-            className="text-text-light font-bold text-lg hover:text-primary transition-colors"
+            className="font-bold text-lg text-text-light hover:text-primary transition-colors"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -43,7 +43,7 @@ export default function Header() {
               handleNavClick('#home')
             }}
           >
-            ML Systems • Backend Development
+            {personalInfo.name}
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -97,7 +97,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-text-light p-2"
+            className="md:hidden p-2 text-text-light"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
