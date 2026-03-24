@@ -171,6 +171,73 @@ export const skills: SkillCategory[] = [
 
 export const projects: Project[] = [
   {
+    id: 'soki',
+    title: 'Soki',
+    description: 'AI-Powered Study Platform',
+    longDescription:
+      'Built in 36 hours during the Carleton MindHack Hackathon, Soki is an AI-powered study platform that turns uploaded notes, slides, and PDFs into active recall material including flashcards, quizzes, and problem-solving questions. It pairs AI generation with an FSRS-based review scheduler so study sessions adapt to user performance over time instead of behaving like a static flashcard generator.',
+    image: './images/Screenshot 2026-03-24 143034.png',
+    techStack: [
+      'Next.js',
+      'FastAPI',
+      'PostgreSQL',
+      'Gemini API',
+      'FSRS',
+      'Authentication',
+      'Calendar Planning',
+      'Deployed Web App',
+    ],
+    featured: true,
+    featuredCalloutTitle: 'Featured Project - Hackathon Winner',
+    featuredCalloutSubtitle: 'Shipped in 36 hours at the Carleton MindHack Hackathon',
+    featuredImageLabel: 'Winner - AI Automation Challenge',
+    category: 'professional',
+    date: 'MindHack Hackathon',
+    details: [
+      {
+        title: 'Problem',
+        items: [
+          'Many students rely on rereading notes, slides, and PDFs, but passive review does not produce strong long-term retention',
+          'A more effective study workflow needs active recall, multiple study formats, and review timing that adapts to actual performance',
+        ],
+      },
+      {
+        title: 'Solution',
+        items: [
+          'Soki accepts uploaded study material and transforms it into flashcards, quizzes, and problem-solving questions with Gemini',
+          'The platform stores user progress and updates future review timing with an FSRS-based scheduler after each review session',
+          'This creates an end-to-end study loop from upload to generation, review, feedback, and rescheduling',
+        ],
+      },
+      {
+        title: 'Key Features',
+        items: [
+          'Study material upload for notes, slides, and PDFs',
+          'AI-generated flashcards, quizzes, and problem-solving prompts',
+          'Active recall review interface instead of passive reading',
+          'Calendar-based review planning and persistent progress tracking',
+          'Authentication, stored user history, and deployed live application',
+        ],
+      },
+      {
+        title: 'Technical Highlights',
+        items: [
+          'The system is not a one-time flashcard generator; it supports multiple study formats and an adaptive review workflow',
+          'Backend pipeline processes uploaded material, generates study content, stores user state, and feeds review outcomes back into future scheduling decisions',
+          'User feedback and performance directly influence which material reappears and when, making the study flow personalized over time',
+        ],
+      },
+      {
+        title: 'Impact / Outcome',
+        items: [
+          'Winner - AI Automation Challenge',
+          'Runner-up - Best Language Cognition',
+          'Delivered as a working product within a 36-hour hackathon timeline',
+        ],
+      },
+    ],
+  },
+  {
     id: 'customs-risk-api',
     title: 'Customs Risk Prediction API',
     description: 'ML System for Senegalese Customs',
@@ -193,7 +260,7 @@ export const projects: Project[] = [
       'Confluence',
     ],
     githubUrl: 'https://github.com/cheikhwade07/customs-risk-api-dashboard.git',
-    featured: true,
+    featured: false,
     category: 'professional',
     date: 'Summer 2025',
     details: [

@@ -10,6 +10,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index, featured = false }: ProjectCardProps) {
+  const primaryUrl = project.githubUrl ?? project.liveUrl
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
@@ -20,7 +22,6 @@ export default function ProjectCard({ project, index, featured = false }: Projec
         featured ? 'border-l-4 border-accent-green' : ''
       }`}
     >
-      {/* Image */}
       <div className="relative overflow-hidden aspect-video">
         <motion.img
           src={project.image}
@@ -41,22 +42,22 @@ export default function ProjectCard({ project, index, featured = false }: Projec
         )}
       </div>
 
-      {/* Content */}
       <div className="p-6">
         <div className="mb-2">
-          {project.date && (
-            <span className="text-text-secondary text-sm">{project.date}</span>
-          )}
+          {project.date && <span className="text-text-secondary text-sm">{project.date}</span>}
         </div>
         <h3 className="text-xl font-bold text-text-primary mb-2 hover:text-primary transition-colors">
-          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-            {project.title}
-          </a>
+          {primaryUrl ? (
+            <a href={primaryUrl} target="_blank" rel="noopener noreferrer">
+              {project.title}
+            </a>
+          ) : (
+            project.title
+          )}
         </h3>
         <p className="text-text-secondary text-sm italic mb-4">{project.description}</p>
         <p className="text-text-secondary mb-4 line-clamp-3">{project.longDescription}</p>
 
-        {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-4">
           {project.techStack.slice(0, 5).map((tech) => (
             <span
@@ -73,19 +74,22 @@ export default function ProjectCard({ project, index, featured = false }: Projec
           )}
         </div>
 
-        {/* Actions */}
-        <div className="flex items-center gap-3">
-          <Button href={project.githubUrl} external size="sm" variant="primary">
-            <FaGithub className="mr-2" />
-            View Code
-          </Button>
-          {project.liveUrl && (
-            <Button href={project.liveUrl} external size="sm" variant="outline">
-              <FaExternalLinkAlt className="mr-2" />
-              Live Demo
-            </Button>
-          )}
-        </div>
+        {(project.githubUrl || project.liveUrl) && (
+          <div className="flex items-center gap-3">
+            {project.githubUrl && (
+              <Button href={project.githubUrl} external size="sm" variant="primary">
+                <FaGithub className="mr-2" />
+                View Code
+              </Button>
+            )}
+            {project.liveUrl && (
+              <Button href={project.liveUrl} external size="sm" variant="outline">
+                <FaExternalLinkAlt className="mr-2" />
+                Live Demo
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </motion.article>
   )

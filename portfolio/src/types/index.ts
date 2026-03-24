@@ -5,9 +5,12 @@ export interface Project {
   longDescription?: string
   image: string
   techStack: string[]
-  githubUrl: string
+  githubUrl?: string
   liveUrl?: string
   featured?: boolean
+  featuredCalloutTitle?: string
+  featuredCalloutSubtitle?: string
+  featuredImageLabel?: string
   category: 'professional' | 'academic'
   date?: string
   details?: ProjectDetail[]
