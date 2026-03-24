@@ -4,190 +4,147 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="en">
 	<head>
-		<title>Seydi Cheikh Wade Portfolio</title>
+		<title>Seydi Cheikh Wade | Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Portfolio of Seydi Cheikh Wade, a Software Engineering student focused on backend systems, machine learning, and product-oriented software projects." />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+		<div id="wrapper" class="fade-in">
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Seydi Cheikh Wade Portfolio<br />
-						</h1>
-						<p>I'm currently a second year undergraduate student in the Software engineering program at carleton university  <a href="https://www.linkedin.com/in/seydi-cheikh-wade-4a3288328/"target='_blank'>Linkedln</a>.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+			<div id="intro">
+				<h1>Seydi Cheikh Wade</h1>
+				<p>Software Engineering student building backend systems, ML-enabled products, and practical developer-focused software.</p>
+				<ul class="actions">
+					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+				</ul>
+			</div>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">This is the place where i build my future</a>
+			<header id="header">
+				<a href="index.html" class="logo">Portfolio</a>
+			</header>
+
+			<nav id="nav">
+				<ul class="links">
+					<li class="active"><a href="index.html">Projects</a></li>
+					<li><a href="#footer">Contact</a></li>
+				</ul>
+				<ul class="icons">
+					<li><a href="https://github.com/cheikhwade07" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+					<li><a href="https://www.linkedin.com/in/seydi-cheikh-wade-4a3288328/" class="icon brands alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+				</ul>
+			</nav>
+
+			<div id="main">
+
+				<article class="post featured" id="projects">
+					<header class="major">
+						<span class="date">Carleton MindHack Hackathon</span>
+						<h2>Soki</h2>
+						<p>AI-powered study platform for active recall, adaptive review scheduling, and faster retention.</p>
 					</header>
+					<span class="image main">
+						<img src="images/Screenshot 2026-03-24 143034.png" alt="Soki study platform homepage"
+							style="max-height: 40rem; object-fit: cover; object-position: top;" />
+					</span>
+					<p><strong>Overview:</strong> Soki is an AI-powered study platform built during the Carleton MindHack Hackathon. It helps students turn uploaded notes, slides, and PDFs into active recall material such as flashcards, quizzes, and problem-solving questions, then schedules review sessions with an FSRS-based spaced repetition workflow. The result is a study system that adapts to performance over time instead of behaving like a static flashcard generator.</p>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
-							
-						</ul>
-						<ul class="icons">
-							<li><a href="https://github.com/cheikhwade07" class="icon brands alt fa-github" target='_blank'><span class="label">GitHub</span></a></li>
-							 <li><a href="https://www.linkedin.com/in/seydi-cheikh-wade-4a3288328/"target='_blank' class="icon brands alt fa-linkedin"><span class="label">Linkedln</span></a></li>
-						</ul>
-					</nav>
+					<h3>Problem</h3>
+					<p>Students often spend hours rereading notes and lecture material, but passive review does not reliably build long-term retention. What is usually missing is a workflow that pushes recall, supports multiple forms of practice, and adjusts future review timing based on how well the student is actually performing.</p>
 
-				<!-- Main -->
-					<div id="main">
+					<h3>Solution</h3>
+					<p>Soki processes uploaded study material through a backend pipeline that extracts content, generates study items with Gemini, stores user progress in PostgreSQL, and recalculates future review timing based on user feedback and review results. This creates a study loop that is active, personalized, and performance-aware from upload through revision.</p>
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2><a href="#">Coding project i did or  i am currently working on<br />
-									</a></h2>
-									<p></p>
-								</header>
-								<a href="#" class="image main"><img src="images/istockphoto-1075599562-612x612.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li></li>
-								</ul>
-							</article>
+					<h3>Key Features</h3>
+					<ul style="text-align: left; display: inline-block;">
+						<li>Upload study material including notes, slides, and PDFs</li>
+						<li>Generate flashcards, quizzes, and problem-solving questions with AI</li>
+						<li>Review material through an active recall interface</li>
+						<li>Adapt review timing with an FSRS-based spaced repetition scheduler</li>
+						<li>Plan sessions with calendar-based review scheduling</li>
+						<li>Support authentication and persistent user progress</li>
+						<li>Deploy the application as a live web product</li>
+					</ul>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header class="major">
-										
-										<h2><a href="#">Spotify_playlist_<br />
-											downloader_project</a></h2>
-									</header>
-									<a href="https://github.com/cheikhwade07/Spotify_playlist_downloader"  class="image fit" target='_blank'><img src="images/unnamed.png" alt="" /></a>
-									<p>Using APIs like PyTube and Spotipy, I created a script that lets you choose 
-										which Spotify playlist you'd like to download and specify the location on your PC for the downloads. 
-										The script retrieves the playlist data and automatically uses  download each song from YouTube into a newly created folder in the name of the playlist.</p>
-									<ul class="actions special">
-										<li><a href="#" ></a></li>
-									</ul>
-								</article>
-								<article>
-									<header class="major">
-										<h2><a href="#">Text-Based Facebook in C</a></h2>
-										<a href="https://github.com/cheikhwade07/Text-Based-Facebook"  class="image fit" target='_blank'><img src="images/Screenshot 2025-01-13 004242.png" alt="" /></a>
-										<p>In  my Fundation of Imperative program course at carleton university i  was asked to create a text based facebook interface user given different data strucure,
-											this assignement tested my understanding of pointer and  memory allocation and my ability to use those concept to complete the task assigned.
-											 </p>
-										<h2><a href="#"><br />
-										</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="" alt="" /></a>
-									<p></p>
-									<ul class="actions special">
-										<li><a href="#" ></a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date"></span>
-										<h2><a href="#"><br />
-										</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="" alt="" /></a>
-									<p></p>
-									<ul class="actions special">
-										<li><a href="#" ></a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date"></span>
-										<h2><a href="#"><br />
-									</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="" alt="" /></a>
-									<p></p>
-									<ul class="actions special">
-										<li><a  ></a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date"></span>
-										<h2><a href="#"><br />
-										</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="" alt="" /></a>
-									<p></p>
-									<ul class="actions special">
-										<li><a href="#" ></a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date"></span>
-										<h2><a href="#"><br />
-										</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="" alt="" /></a>
-									<p></p>
-									<ul class="actions special">
-										<li><a  ></a></li>
-									</ul>
-								</article>
-							</section>
+					<h3>Tech Stack</h3>
+					<p>Next.js, FastAPI, PostgreSQL, Gemini API, FSRS-based review scheduler, authentication, deployed web application.</p>
 
-						
+					<h3>Technical Highlights</h3>
+					<ul style="text-align: left; display: inline-block;">
+						<li><strong>Not a one-shot generator:</strong> Soki supports multiple study formats and an adaptive review workflow rather than stopping at content generation.</li>
+						<li><strong>Backend processing pipeline:</strong> uploaded material is processed, transformed into study content, stored with user-specific state, and tied back into future scheduling decisions.</li>
+						<li><strong>Adaptive scheduling:</strong> review timing changes based on user performance and explicit feedback, keeping material in circulation when it is weak and spacing it out when retention improves.</li>
+						<li><strong>Full-stack delivery under time pressure:</strong> the project combined frontend UX, backend services, persistent storage, auth, and deployment within a 36-hour hackathon window.</li>
+					</ul>
 
-					</div>
-  
-				<!-- Footer -->
-					<footer id="footer">
-						
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Ontario,Ottawa
-								</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(514) 431-3541</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">seydicheikhwade@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://github.com/cheikhwade07" target='_blank'class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								    <li><a href="https://www.linkedin.com/in/seydi-cheikh-wade-4a3288328/"target='_blank' class="icon brands alt fa-linkedin"><span class="label">Linkedln</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+					<h3>Impact / Outcome</h3>
+					<p>Soki was shipped in 36 hours and won <strong>Winner - AI Automation Challenge</strong> and <strong>Runner-up - Best Language Cognition</strong> at the Carleton MindHack Hackathon. The project stood out because it delivered a usable study workflow with adaptive logic, persistence, and multiple content formats rather than a demo limited to static flashcard generation.</p>
+				</article>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+				<section class="posts">
+					<article>
+						<header>
+							<h2><a href="https://github.com/cheikhwade07/Spotify_playlist_downloader" target="_blank">Spotify Playlist Downloader</a></h2>
+						</header>
+						<a href="https://github.com/cheikhwade07/Spotify_playlist_downloader" class="image fit" target="_blank"><img src="images/unnamed.png" alt="Spotify Playlist Downloader" /></a>
+						<p>Python automation project that pulls playlist data from Spotify, maps tracks to YouTube sources, and downloads the songs into a playlist-specific folder on the local machine.</p>
+					</article>
+					<article>
+						<header>
+							<h2><a href="https://github.com/cheikhwade07/Text-Based-Facebook" target="_blank">Text-Based Facebook in C</a></h2>
+						</header>
+						<a href="https://github.com/cheikhwade07/Text-Based-Facebook" class="image fit" target="_blank"><img src="images/Screenshot 2025-01-13 004242.png" alt="Text-Based Facebook in C" /></a>
+						<p>C systems project focused on data structures, pointers, and dynamic memory management through a command-line social platform simulation built for foundational programming coursework.</p>
+					</article>
+				</section>
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<footer id="footer">
+				<section class="split contact">
+					<section class="alt">
+						<h3>Location</h3>
+						<p>Ottawa, Ontario, Canada</p>
+					</section>
+					<section>
+						<h3>Phone</h3>
+						<p><a href="tel:+15144313541">(514) 431-3541</a></p>
+					</section>
+					<section>
+						<h3>Email</h3>
+						<p><a href="mailto:seydicheikhwade@gmail.com">seydicheikhwade@gmail.com</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="https://github.com/cheikhwade07" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/seydi-cheikh-wade-4a3288328/" target="_blank" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+
+			<div id="copyright">
+				<ul>
+					<li>&copy; Seydi Cheikh Wade</li>
+					<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
