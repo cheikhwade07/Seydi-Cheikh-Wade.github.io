@@ -8,6 +8,7 @@ export default function Projects() {
     (project) => project.category === 'professional' && !project.featured
   )
   const academicProjects = projects.filter((project) => project.category === 'academic')
+  const featuredPrimaryUrl = featuredProject?.liveUrl ?? featuredProject?.githubUrl
 
   return (
     <section id="projects" className="bg-surface section-padding">
@@ -43,23 +44,39 @@ export default function Projects() {
             >
               <div className="grid lg:grid-cols-2">
                 <div className="relative aspect-video lg:aspect-auto">
-                  <img
-                    src={featuredProject.image}
-                    alt={featuredProject.title}
-                    className="w-full h-full object-cover"
-                  />
-                  {featuredProject.featuredImageLabel && (
-                    <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {featuredProject.featuredImageLabel}
-                    </div>
+                  {featuredPrimaryUrl ? (
+                    <a
+                      href={featuredPrimaryUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block w-full h-full"
+                      aria-label={`Open ${featuredProject.title} live application`}
+                    >
+                      <img
+                        src={featuredProject.image}
+                        alt={featuredProject.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                        <span className="inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-sm font-medium text-text-primary">
+                          Open live application
+                        </span>
+                      </div>
+                    </a>
+                  ) : (
+                    <img
+                      src={featuredProject.image}
+                      alt={featuredProject.title}
+                      className="w-full h-full object-cover"
+                    />
                   )}
                 </div>
 
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-text-primary mb-2">
-                    {featuredProject.githubUrl || featuredProject.liveUrl ? (
+                    {featuredPrimaryUrl ? (
                       <a
-                        href={featuredProject.liveUrl ?? featuredProject.githubUrl}
+                        href={featuredPrimaryUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-primary transition-colors"
@@ -86,24 +103,24 @@ export default function Projects() {
 
                   {(featuredProject.githubUrl || featuredProject.liveUrl) && (
                     <div className="flex flex-wrap gap-3">
-                      {featuredProject.githubUrl && (
-                        <a
-                          href={featuredProject.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-light transition-colors font-medium"
-                        >
-                          View Code on GitHub
-                        </a>
-                      )}
                       {featuredProject.liveUrl && (
                         <a
                           href={featuredProject.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/5 transition-colors font-medium"
+                          className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-light transition-colors font-medium"
                         >
                           View Live Application
+                        </a>
+                      )}
+                      {featuredProject.githubUrl && (
+                        <a
+                          href={featuredProject.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/5 transition-colors font-medium"
+                        >
+                          View Code on GitHub
                         </a>
                       )}
                     </div>

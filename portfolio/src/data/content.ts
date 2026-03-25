@@ -187,10 +187,10 @@ export const projects: Project[] = [
       'Calendar Planning',
       'Deployed Web App',
     ],
+    liveUrl: 'https://soki-eight.vercel.app/',
     featured: true,
     featuredCalloutTitle: 'Featured Project - Hackathon Winner',
     featuredCalloutSubtitle: 'Shipped in 36 hours at the Carleton MindHack Hackathon',
-    featuredImageLabel: 'Winner - AI Automation Challenge',
     category: 'professional',
     date: 'MindHack Hackathon',
     details: [
