@@ -326,6 +326,52 @@ function HeistTheme({ accent, showGithub, showNow }) {
 
     .h-foot{padding:40px 0 60px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:${isDark?dim:onCardDim};border-top:1px solid ${rule};margin-top:60px;flex-wrap:wrap;gap:12px}
     .h-foot .h-np{color:${cyan}}
+
+    /* Responsive polish: preserve the desktop art direction, but stop the hero
+       layers, portrait card, and dense controls from fighting narrow screens. */
+    @media(max-width:760px){
+      .h-root{overflow-x:hidden}
+      .h-wrap{padding:0 18px}
+      .h-top{flex-direction:column;align-items:flex-start;gap:14px;padding-top:18px}
+      .h-top-right{gap:10px 14px}
+      .h-top a,.h-mode-btn{font-size:10px;letter-spacing:.12em}
+      .h-mode-btn{min-height:40px;padding:0 12px}
+      .h-hero{padding-top:36px}
+      .h-vlabel{display:none}
+      .h-portrait{width:170px;height:220px;margin:0 auto 26px}
+      .h-name-wrap{max-width:100%;margin-top:10px}
+      .h-name{font-size:clamp(52px,18vw,98px);line-height:.9;letter-spacing:-.01em}
+      .h-name-echo,.h-name-echo2{display:none}
+      .h-sub{margin-top:22px}
+      .h-sub p{font-size:16px}
+      .h-meta{grid-template-columns:1fr;gap:10px}
+      .h-sec{gap:8px 12px;margin-top:76px}
+      .h-sec-title{font-size:clamp(34px,12vw,58px)}
+      .h-projects{gap:12px}
+      .h-proj{padding:22px}
+      .h-proj h3{font-size:clamp(26px,9vw,42px)}
+      .h-skills{grid-template-columns:1fr}
+      .h-gh{padding:20px;overflow-x:auto}
+      .h-gh-grid{min-width:560px}
+      .h-gh-foot{min-width:560px}
+      .h-cta-wrap{margin:84px 0 52px;padding:${isDark?'0':'18px'}}
+      .h-cta{margin:${isDark?'84px 0 52px':'0'};padding:44px 22px}
+      .h-cta h2{font-size:clamp(42px,13vw,70px);line-height:.98}
+      .h-cta-row{flex-direction:column;gap:12px;margin-top:30px}
+      .h-cta-btn{display:flex;justify-content:center;width:100%;padding:16px 20px;text-align:center}
+      .h-foot{font-size:10px;letter-spacing:.1em}
+    }
+
+    @media(max-width:420px){
+      .h-wrap{padding:0 14px}
+      .h-top-right{width:100%;justify-content:space-between}
+      .h-name{font-size:clamp(46px,17vw,72px);line-height:.94}
+      .h-portrait{width:150px;height:196px}
+      .h-arcana{font-size:12px}
+      .h-card{border-radius:8px}
+      .h-proj,.h-skill-card{padding:18px}
+      .h-sec-title{font-size:clamp(30px,11vw,48px)}
+    }
   `;
 
   const spans = ["span6", "span6", "span6", "span6", "span6", "span6"];
