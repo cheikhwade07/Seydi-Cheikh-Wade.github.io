@@ -12,7 +12,7 @@ const ME = {
   site: "cheikhwade.com",
   github: "https://github.com/cheikhwade07",
   linkedin: "https://www.linkedin.com/in/seydi-c",
-  resumeUrl: "/SeydiCheikhWade_resume.pdf",
+  resumeUrl: "SeydiCheikhWade_resume.pdf",
   now: [
     "Wiring deeper retrieval into ChizuCode — scoped pgvector search over code + summary embeddings.",
     "Reading Designing Data-Intensive Applications, slowly, with margin notes.",

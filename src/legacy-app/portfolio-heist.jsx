@@ -462,7 +462,7 @@ function HeistTheme({ accent, showGithub, showNow }) {
 
           <div className="h-portrait" aria-hidden="false">
             <div className="h-portrait-img">
-              <img src="/portrait.png" alt="Seydi Cheikh Wade"/>
+              <img src="portrait.png" alt="Seydi Cheikh Wade"/>
             </div>
           </div>
 
