@@ -67,7 +67,7 @@ function HeistTheme({ accent, showGithub, showNow }) {
 
   // Particle field:
   //   DARK  → twinkling stars across the page
-  //   LIGHT → rising bubbles across the whole page (submerged feel)
+  //   LIGHT → local bubble pops, which are much cheaper than viewport-spanning travel
   const particles = useMemoH(() => {
     if (isDark) {
       return Array.from({length: 60}, () => ({
@@ -79,13 +79,13 @@ function HeistTheme({ accent, showGithub, showNow }) {
         op: .35 + Math.random() * .55,
       }));
     }
-    return Array.from({length: 55}, () => ({
+    return Array.from({length: 28}, () => ({
       x: Math.random() * 100,
+      y: 8 + Math.random() * 84,
       size: 2 + Math.random() * 8,
-      delay: -Math.random() * 26,
-      dur: 18 + Math.random() * 22,
-      drift: (Math.random() - .5) * 80,
-      op: .15 + Math.random() * .35,
+      delay: -Math.random() * 8,
+      dur: 5 + Math.random() * 5,
+      op: .18 + Math.random() * .32,
     }));
   }, [mode]);
 
@@ -95,7 +95,7 @@ function HeistTheme({ accent, showGithub, showNow }) {
     @keyframes hsweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
     @keyframes hshimmer{0%{background-position:0% 0%, 0% 0%, 0% 0%}100%{background-position:120% 60%, -100% 40%, 80% -80%}}
     @keyframes hcaustic{0%,100%{opacity:.35;transform:translate3d(0,0,0) scale(1)}50%{opacity:.7;transform:translate3d(-2%,1%,0) scale(1.04)}}
-    @keyframes hrise{0%{transform:translate3d(0,0,0) scale(.85);opacity:0}10%{opacity:var(--op)}90%{opacity:var(--op)}100%{transform:translate3d(var(--drift),-105vh,0) scale(1.15);opacity:0}}
+    @keyframes hpop{0%,100%{transform:scale(.65);opacity:0}18%{opacity:var(--op)}55%{transform:scale(1.08);opacity:var(--op)}78%{opacity:.08}100%{transform:scale(1.35);opacity:0}}
     @keyframes hgodray{0%,100%{opacity:.45;transform:translate3d(0,0,0) rotate(18deg)}50%{opacity:.75;transform:translate3d(24px,12px,0) rotate(20deg)}}
     @keyframes htwinkle{0%,100%{opacity:var(--op);transform:scale(1)}50%{opacity:.15;transform:scale(.6)}}
     @keyframes hwave{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -157,9 +157,9 @@ function HeistTheme({ accent, showGithub, showNow }) {
 
     .h-grain{position:fixed;inset:0;pointer-events:none;z-index:2;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 ${isDark?1:0}  0 0 0 0 ${isDark?1:0}  0 0 0 0 ${isDark?1:0}  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");mix-blend-mode:${isDark?'overlay':'multiply'};opacity:${isDark?.4:.0}}
 
-    /* Particles: stars (dark) or rising bubbles full-page (light) */
+    /* Particles: stars (dark) or local bubble pops (light) */
     .h-particles{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
-    .h-particles span{position:absolute;border-radius:50%;${isDark?`background:#EAF6FF;box-shadow:0 0 6px #FFFFFF99;`:`background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9),rgba(180,230,255,.5) 60%,rgba(127,211,244,0));box-shadow:inset 0 0 4px rgba(255,255,255,.6),0 0 8px rgba(255,255,255,.25);bottom:-40px;`}animation:${isDark?'htwinkle':'hrise'} var(--dur) ${isDark?'ease-in-out':'linear'} infinite;animation-delay:var(--delay)}
+    .h-particles span{position:absolute;border-radius:50%;will-change:transform,opacity;${isDark?`background:#EAF6FF;box-shadow:0 0 6px #FFFFFF99;`:`background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9),rgba(180,230,255,.5) 60%,rgba(127,211,244,0));box-shadow:inset 0 0 4px rgba(255,255,255,.55),0 0 8px rgba(255,255,255,.18);`}animation:${isDark?'htwinkle':'hpop'} var(--dur) ${isDark?'ease-in-out':'ease-in-out'} infinite;animation-delay:var(--delay)}
 
     .h-wrap{position:relative;z-index:3;max-width:1440px;margin:0 auto;padding:0 56px}
     @media(max-width:760px){.h-wrap{padding:0 22px}}
@@ -420,12 +420,11 @@ function HeistTheme({ accent, showGithub, showNow }) {
         {particles.map((p, i) => (
           <span key={i} style={{
             left: `${p.x}%`,
-            ...(isDark ? { top: `${p.y}%` } : {}),
+            top: `${p.y}%`,
             width: `${p.size}px`,
             height: `${p.size}px`,
             ['--delay']: `${p.delay}s`,
             ['--dur']: `${p.dur}s`,
-            ['--drift']: `${p.drift||0}px`,
             ['--op']: p.op,
           }}></span>
         ))}
