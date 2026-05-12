@@ -329,6 +329,28 @@ function HeistTheme({ accent, showGithub, showNow }) {
 
     /* Responsive polish: preserve the desktop art direction, but stop the hero
        layers, portrait card, and dense controls from fighting narrow screens. */
+    @media(max-width:1100px){
+      .h-wrap{padding:0 36px}
+      .h-top{align-items:flex-start}
+      .h-top-right{gap:14px 18px}
+      .h-hero{padding:48px 0 96px;min-height:auto}
+      .h-portrait{position:absolute;top:118px;right:18px;width:210px;height:274px;margin:0}
+      .h-eyebrow{max-width:calc(100% - 250px);margin-bottom:24px}
+      .h-name-wrap{max-width:calc(100% - 190px);margin-top:10px}
+      .h-name,.h-name-echo,.h-name-echo2{font-size:clamp(72px,10vw,122px);line-height:.88}
+      .h-sub{margin-top:42px;grid-template-columns:minmax(0,1fr);max-width:calc(100% - 250px);gap:24px}
+      .h-blurb{font-size:19px}
+      .h-meta{max-width:520px}
+      .h-sec{padding-top:74px}
+      .h-sec-num{font-size:clamp(92px,15vw,160px)}
+    }
+
+    @media(max-width:880px){
+      .h-portrait{position:relative;top:auto;right:auto;width:190px;height:248px;margin:0 auto 28px}
+      .h-eyebrow,.h-name-wrap,.h-sub{max-width:none}
+      .h-name,.h-name-echo,.h-name-echo2{font-size:clamp(60px,15vw,102px)}
+    }
+
     @media(max-width:760px){
       .h-root{overflow-x:hidden}
       .h-wrap{padding:0 18px}
