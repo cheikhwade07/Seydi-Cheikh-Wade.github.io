@@ -5,7 +5,9 @@ Copy everything inside the fenced block below and paste it into Claude Code (run
 ---
 
 ```
-I'm replacing my GitHub Pages portfolio with a new single-file build. The new files are sitting in this repo's root: `index.html`, `HANDOFF.md`, `PROMPT.md`, and (added by me) `cv.pdf`.
+I'm replacing my GitHub Pages portfolio with a new single-file build. The new files are sitting in this repo's root: `index.html`, `portrait.png`, `HANDOFF.md`, `PROMPT.md`, and (added by me) `cv.pdf`.
+
+Note: `portrait.png` is the source portrait. It's ALREADY inlined into `index.html` as base64, so the site will render without it — but keep `portrait.png` in the repo root anyway. It serves as the source asset (so future edits can swap it in cleanly) and as the OpenGraph preview image.
 
 Please do the following, in order:
 
@@ -26,7 +28,7 @@ Please do the following, in order:
    > Personal portfolio for Seydi Cheikh Wade — built as a single self-contained HTML file.
    > Edit `index.html` directly to update content. See HANDOFF.md for details.
 
-5. Confirm `cv.pdf` is present at the repo root. If it's missing, stop and tell me so I can add it before we commit.
+5. Confirm `cv.pdf` AND `portrait.png` are both present at the repo root. If either is missing, stop and tell me so I can add it before we commit.
 
 6. Stage everything, commit with the message:
    `redesign: heist portfolio (single-file build)`
