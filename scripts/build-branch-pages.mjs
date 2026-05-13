@@ -23,5 +23,19 @@ if (existsSync(join('dist', 'assets'))) {
   cpSync(join('dist', 'assets'), 'assets', { recursive: true });
 }
 
-copyFileSync(join('dist', 'portrait.png'), 'portrait.png');
-copyFileSync(join('dist', 'SeydiCheikhWade_resume.pdf'), 'SeydiCheikhWade_resume.pdf');
+const publicAssets = [
+  'ChizuCode.png',
+  'CrisisCenterPage.png',
+  'JasmineDiagram.png',
+  'portrait.png',
+  'Resume.png',
+  'SeydiCheikhWade_resume.pdf',
+  'Soki.png',
+];
+
+for (const asset of publicAssets) {
+  const builtAsset = join('dist', asset);
+  if (existsSync(builtAsset)) {
+    copyFileSync(builtAsset, asset);
+  }
+}

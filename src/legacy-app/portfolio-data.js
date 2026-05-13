@@ -1,11 +1,11 @@
-// portfolio-data.jsx — content sourced from Cheikh's resume (May 2026).
+// portfolio-data.js - content layer for Cheikh's portfolio (May 2026).
 
 const ME = {
   name: "Seydi Cheikh Wade",
   short: "Cheikh",
   role: "Software Engineering · Carleton '28",
-  blurb: "Third-year software engineering student at Carleton (Co-op). I work on applied ML and the full-stack scaffolding that ships it — RAG pipelines, FastAPI services, and the kind of frontend that makes the model feel useful instead of impressive.",
-  blurbWarm: "Hey — I'm Cheikh. Third-year SE at Carleton, currently into applied AI: training models, serving them through FastAPI, and wrapping them in interfaces people actually want to use.",
+  blurb:
+    "I care about building software that touches people's lives — and learning everything I can along the way. I've failed plenty, but I don't quit. From deploying ML for a government customs agency to winning hackathons with RAG pipelines and AI study tools, every project has pulled me deeper into understanding how these systems work, how they break, and how to make them better. That drive shows up in everything I build.",
   location: "Ottawa, ON",
   email: "seyiwade@cmail.carleton.ca",
   phone: "+1 (514) 431-3541",
@@ -13,130 +13,101 @@ const ME = {
   github: "https://github.com/cheikhwade07",
   linkedin: "https://www.linkedin.com/in/seydi-c",
   resumeUrl: "SeydiCheikhWade_resume.pdf",
-  now: [
-    "Wiring deeper retrieval into ChizuCode — scoped pgvector search over code + summary embeddings.",
-    "Reading Designing Data-Intensive Applications, slowly, with margin notes.",
-    "Heading to Statistics Canada this summer for a Python migration co-op.",
+  resumePreview: "Resume.png",
+  statusLines: [
+    "Open-Source Statistical Programmer @ Statistics Canada",
+    "Ex Junior Data Scientist @ Jasmine Conseil",
+    "Software Engineer (Volunteer) @ Develop for Good",
+    "2x Hackathon Winner",
+    "B.Eng. Software Engineering @ Carleton University",
   ],
 };
 
-const PROJECTS = [
+const FEATURED_PROJECTS = [
   {
     id: "chizu",
     name: "ChizuCode",
-    tagline: "RAG pipeline that explains unfamiliar codebases.",
-    long: "Won MLH Best Use of Gemini API at ConHacks 2026 with a team of 4. End-to-end RAG: ingests GitHub repos, generates dual embeddings (Gemini for summaries, Voyage AI for code), stores vectors in pgvector, and clusters files into semantic domains via scikit-learn hierarchical clustering. Scoped retrieval embeds the user's question, runs pgvector similarity over chunked code + summaries, filters for relevance, and grounds the Gemini answer in the retrieved chunks.",
+    tagline: "A RAG pipeline that teaches your codebase back to you.",
+    description:
+      "Onboarding onto a new codebase is slow — you don't know what files do, how they connect, or where to start asking questions. ChizuCode ingests a GitHub repo, generates dual embeddings (Gemini for summaries, Voyage AI for raw code), stores vectors in pgvector, and clusters files into semantic domains so you can explore visually. Scoped retrieval lets you ask questions grounded in the actual code. Won MLH Best Use of Gemini API at ConHacks 2026.",
     stack: ["Next.js", "FastAPI", "PostgreSQL", "pgvector", "Gemini API", "Voyage AI"],
-    tags: ["AI", "Full-stack", "Hackathon winner"],
-    role: "Team of 4 · ConHacks 2026",
-    year: "2026",
-    repo: "https://github.com/cheikhwade07/ChizuCode",
+    award: "MLH · Best Use of Gemini API",
+    hackathon: "ConHacks 2026",
+    role: "Team of 4",
+    image: "ChizuCode.png",
     liveUrl: "https://chizu-code.vercel.app/",
-    award: "MLH · Best Use of Gemini",
+    repoUrl: "https://github.com/cheikhwade07/ChizuCode",
+    devpostUrl: "https://devpost.com/software/chizucode",
   },
   {
     id: "soki",
     name: "Soki",
-    tagline: "AI study app — flashcards + spaced repetition.",
-    long: "Won 1st place (AI Automation) and runner-up (Best Language Cognition) at Carleton MindHack — 36-hour sprint, team of 3. Content pipeline parses uploaded PDFs, sends structured prompts to Gemini, and returns flashcards + quizzes tailored to the source. An FSRS-based scheduler adapts review intervals to each learner's pattern.",
+    tagline: "AI study platform — upload notes, get flashcards, retain more.",
+    description:
+      "Students re-read notes passively because making good flashcards is tedious. Soki takes a PDF upload, parses it, sends structured prompts to Gemini, and returns flashcards and quizzes tailored to the source material. An FSRS-based scheduler adapts review intervals to how well you actually retain each card. Won 1st place (AI Automation) and runner-up (Best Language Cognition) at Carleton MindHack — 36-hour sprint, team of 3.",
     stack: ["Next.js", "FastAPI", "PostgreSQL", "Gemini API", "FSRS"],
-    tags: ["AI", "Full-stack", "Hackathon winner"],
-    role: "Team of 3 · Carleton MindHack",
-    year: "2025",
-    repo: "https://github.com/cheikhwade07/Soki",
+    award: "1st Place · AI Automation",
+    hackathon: "Carleton MindHack 2026",
+    role: "Team of 3",
+    image: "Soki.png",
     liveUrl: "https://soki-eight.vercel.app/",
-    award: "1st · AI Automation",
-  },
-  {
-    id: "customs",
-    name: "Customs Risk API",
-    tagline: "ML system automating customs control decisions.",
-    long: "Built during my Jasmine Conseil co-op for the Senegalese Customs Administration — automates control-circuit assignment across 10,000+ import declarations, supporting 40% of national budget operations. Benchmarked 5+ classifiers; selected MLPClassifier+PCA at ROC-AUC 0.99 / F1 0.86 on imbalanced data, serialized with Joblib. Deployed as a FastAPI REST API on a DigitalOcean Linux VM with Pydantic validation, firewalld rules, and a MuleSoft Anypoint proxy for rate limiting.",
-    stack: ["Python", "scikit-learn", "FastAPI", "DigitalOcean", "MuleSoft"],
-    tags: ["AI", "Co-op", "Production"],
-    role: "Jr. Data Scientist · Jasmine Conseil",
-    year: "Summer 2025",
-    repo: "https://github.com/cheikhwade07/customs-risk-api-dashboard",
-  },
-  {
-    id: "drone",
-    name: "Firefighting Drone Swarm",
-    tagline: "Distributed drone scheduler over UDP — with fault recovery.",
-    long: "Built the scheduler for a distributed drone coordination system running as 3 separate Java processes over UDP (DatagramSocket), dispatching drones to fire zones in real time. Implemented fault detection and recovery: detects drones stuck mid-flight or jammed nozzles via timing events, reroutes to available drones, and marks faulted units offline.",
-    stack: ["Java", "UDP", "Concurrency", "State Machines"],
-    tags: ["Systems", "Coursework"],
-    role: "Team · SYSC 3303",
-    year: "Winter 2026",
-    repo: "https://github.com/cheikhwade07/Firefighting-Drone-Swarm",
-  },
-  {
-    id: "relax",
-    name: "Relax Query Processor",
-    tagline: "Mini relational algebra engine, in Java.",
-    long: "For COMP 3005 — parser, AST, and evaluator for a Relax-style relational algebra language. Selection, projection, joins, set ops, written so the operator tree is debuggable by inspection.",
-    stack: ["Java", "ANTLR", "JUnit"],
-    tags: ["Systems", "Coursework"],
-    role: "Solo",
-    year: "Fall 2025",
-    repo: "https://github.com/cheikhwade07/relax-query-processor",
-  },
-  {
-    id: "uno",
-    name: "Multiplayer UNO",
-    tagline: "MVC card game with the inevitable 'Wild +4' bugs.",
-    long: "Multiplayer UNO with a clean MVC split — sockets for networking, animated hand on the view side, rules engine you can poke at without touching the UI. Built in a team to practice patterns more than to ship a hit game.",
-    stack: ["Java", "Swing", "Sockets"],
-    tags: ["Coursework", "Networking"],
-    role: "Team · SYSC 3110",
-    year: "2024",
-    repo: "https://github.com/cheikhwade07/Multiplayer-UNO-Game-Java-MVC-Architecture",
+    repoUrl: "https://github.com/cheikhwade07/Soki",
+    devpostUrl: "https://devpost.com/software/soki-kq2gc8",
   },
 ];
 
 const EXPERIENCE = [
   {
-    role: "Open-Source Statistical Programmer (Co-op)",
-    org: "Statistics Canada",
-    period: "May – Aug 2026",
-    where: "Ottawa, ON",
-    bullets: [
-      "Contributing to the SAS-to-Python migration of legacy statistical programs — Python and pandas, modernizing data workflows for a federal statistical agency.",
-      "Building and maintaining ETL pipelines for large-scale statistical data, ensuring integrity across transformation stages for downstream analysis.",
-    ],
-  },
-  {
+    id: "jasmine",
     role: "Junior Data Scientist (Co-op)",
     org: "Jasmine Conseil",
+    context: "Federal Government Client",
     period: "Jun – Sep 2025",
-    where: "Laval, QC · federal government client",
-    bullets: [
-      "Shipped an ML system for the Senegalese Customs Administration automating control-circuit assignment across 10,000+ declarations, supporting 40% of national budget ops.",
-      "Benchmarked 5+ classifiers; MLPClassifier+PCA won at ROC-AUC 0.99 / F1 0.86 on imbalanced data; serialized with Joblib for production.",
-      "Deployed as a FastAPI REST API on a DigitalOcean Linux VM — Pydantic validation, Swagger docs, firewalld rules, MuleSoft Anypoint proxy for rate limiting.",
-    ],
+    where: "Laval, QC",
+    description:
+      "The Senegalese Customs Administration needed a way to automate control circuit assignment across 10,000+ import declarations — a process tied to 40% of national budget operations. I built the ML prediction system end-to-end: benchmarked 5+ classifiers, selected MLPClassifier+PCA (ROC-AUC 0.99, F1 0.86 on imbalanced data), and deployed it as a FastAPI REST API on a DigitalOcean Linux VM with firewalld rules and a MuleSoft Anypoint proxy. The prototype I built is now being used to develop a production system for Senegalese Customs.",
+    stack: ["Python", "scikit-learn", "FastAPI", "DigitalOcean", "MuleSoft"],
+    image: null,
+    diagramLabels: {
+      source: "Système GAINDE",
+      sourceData: "Déclaration de marchandise\n(format JSON)",
+      proxy: "Anypoint\n(Proxy API)",
+      api: "API\n(VM DigitalOcean)",
+      model: "Modèle de\nmachine learning",
+      output: "Prédiction de risque\n(format JSON)",
+    },
+    repoUrl: "https://github.com/cheikhwade07/customs-risk-api-dashboard",
+  },
+  {
+    id: "statcan",
+    role: "Open-Source Statistical Programmer (Co-op)",
+    org: "Statistics Canada",
+    context: "Federal Government",
+    period: "May – Aug 2026",
+    where: "Ottawa, ON",
+    current: true,
+    description:
+      "Currently contributing to the migration of legacy SAS programs to Python, modernizing data processing workflows for a federal statistical agency. Building and maintaining ETL pipelines for large-scale statistical data, ensuring integrity across transformation stages for downstream analysis.",
+    stack: ["Python", "pandas", "SAS", "ETL"],
+    image: null,
+    repoUrl: null,
   },
 ];
 
 const VOLUNTEERING = [
   {
+    id: "dfg",
     role: "Software Engineer (Volunteer)",
-    org: "Develop for Good · Crisis Center, Inc.",
+    org: "Develop for Good",
+    client: "Crisis Center, Inc.",
     period: "May – Aug 2026",
     where: "Remote",
-    bullets: [
-      "Redesigning and rebuilding a website for a crisis-support nonprofit serving clients, donors, and volunteers.",
-      "Contributing to UX research, information architecture, and low/no-code implementation as part of a structured volunteer engineering team.",
-    ],
-  },
-  {
-    role: "B.Eng. Software Engineering (Co-op)",
-    org: "Carleton University",
-    period: "2023 – May 2028",
-    where: "Ottawa, ON · GPA 3.6/4.0",
-    bullets: [
-      "Coursework: Database Systems, Algorithms & Data Structures, Operating Systems, OO Software Development, Real-Time Concurrent Systems, Requirements Engineering, Computer Architecture.",
-      "Reliability Status security clearance.",
-    ],
+    current: true,
+    description:
+      "Crisis Center, Inc. runs crisis and suicide hotlines, sexual assault support, recovery programs, and youth services across six counties in Central Alabama — serving over 30,000 people. Their website is often the first point of contact for someone in crisis. I'm part of a volunteer engineering team redesigning and rebuilding that digital front door, contributing to UX research, information architecture, and implementation.",
+    image: "CrisisCenterPage.png",
+    siteUrl: "https://www.crisiscenterbham.org/",
+    orgUrl: "https://www.developforgood.org/",
   },
 ];
 
@@ -147,19 +118,167 @@ const SKILLS = [
   { group: "Infra & Cloud", items: ["PostgreSQL", "pgvector", "Docker", "Linux CLI", "DigitalOcean", "MuleSoft", "Git"] },
 ];
 
-// 52 weeks × 7 days contribution grid (seeded random, looks plausible)
-const CONTRIB = (() => {
-  let s = 1337;
-  const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
-  return Array.from({ length: 52 }, (_, w) =>
-    Array.from({ length: 7 }, (_, d) => {
-      const base = 0.25 + 0.4 * Math.sin((w + d * 0.3) / 4);
-      const r = rnd();
-      if (r < 0.18) return 0;
-      const v = r * base * 4;
-      return Math.min(4, Math.floor(v));
-    })
-  );
-})();
+const PINNED_OTHER_PROJECTS = [
+  {
+    id: "drone",
+    name: "Firefighting Drone Swarm",
+    tagline: "Distributed drone scheduler over UDP — with fault recovery.",
+    stack: ["Java", "UDP", "Concurrency", "State Machines"],
+    repoUrl: "https://github.com/cheikhwade07/Firefighting-Drone-Swarm",
+  },
+];
 
-Object.assign(window, { ME, PROJECTS, EXPERIENCE, VOLUNTEERING, SKILLS, CONTRIB });
+let CONTRIB = Array.from({ length: 52 }, () => Array.from({ length: 7 }, () => 0));
+
+function normalizeRepoUrl(url) {
+  return String(url || "").replace(/\/$/, "").toLowerCase();
+}
+
+async function fetchGitHubContributions(username = "cheikhwade07") {
+  try {
+    const response = await fetch(
+      `https://github-contributions-api.jogruber.de/v4/${username}?y=last`
+    );
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    const contributions = data.contributions || [];
+    const grid = [];
+    let week = [];
+    for (const day of contributions) {
+      week.push(day.level);
+      if (week.length === 7) {
+        grid.push(week);
+        week = [];
+      }
+    }
+    if (week.length > 0) {
+      while (week.length < 7) week.push(0);
+      grid.push(week);
+    }
+    while (grid.length < 52) grid.unshift(Array(7).fill(0));
+    if (grid.length > 52) grid.splice(0, grid.length - 52);
+
+    CONTRIB = grid;
+    window.CONTRIB = grid;
+    window._contribTotal = contributions.reduce((sum, day) => sum + day.count, 0);
+    window._contribRange = {
+      start: contributions[0]?.date || null,
+      end: contributions[contributions.length - 1]?.date || null,
+    };
+    window._contribLoaded = true;
+    window.dispatchEvent(new CustomEvent("contrib-loaded"));
+  } catch (err) {
+    console.warn("GitHub contributions fetch failed:", err);
+    window._contribLoaded = true;
+    window.dispatchEvent(new CustomEvent("contrib-loaded"));
+  }
+}
+
+async function fetchGitHubRepos(username = "cheikhwade07") {
+  try {
+    const response = await fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=30`
+    );
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const repos = await response.json();
+    const excludeUrls = [
+      ...FEATURED_PROJECTS.map((p) => p.repoUrl),
+      ...PINNED_OTHER_PROJECTS.map((p) => p.repoUrl),
+      ...EXPERIENCE.filter((e) => e.repoUrl).map((e) => e.repoUrl),
+    ].map(normalizeRepoUrl);
+    const filtered = repos
+      .filter((repo) => (
+        !repo.fork &&
+        repo.description &&
+        !excludeUrls.includes(normalizeRepoUrl(repo.html_url))
+      ))
+      .slice(0, 6)
+      .map((repo) => ({
+        id: repo.name,
+        name: repo.name,
+        tagline: repo.description,
+        language: repo.language,
+        stars: repo.stargazers_count,
+        repoUrl: repo.html_url,
+      }));
+
+    window._otherRepos = filtered;
+    window._reposError = false;
+    window._reposLoaded = true;
+    window.dispatchEvent(new CustomEvent("repos-loaded"));
+  } catch (err) {
+    console.warn("GitHub repos fetch failed:", err);
+    window._otherRepos = [];
+    window._reposError = true;
+    window._reposLoaded = true;
+    window.dispatchEvent(new CustomEvent("repos-loaded"));
+  }
+}
+
+// Legacy aliases keep the terminal/editorial themes available without making
+// them part of the redesign work.
+const PROJECTS = [
+  ...FEATURED_PROJECTS.map((project) => ({
+    id: project.id,
+    name: project.name,
+    tagline: project.tagline,
+    long: project.description,
+    stack: project.stack,
+    tags: [project.hackathon, project.award].filter(Boolean),
+    role: `${project.role} · ${project.hackathon}`,
+    year: project.hackathon.match(/\d{4}/)?.[0] || "2026",
+    repo: project.repoUrl,
+    liveUrl: project.liveUrl,
+    award: project.award,
+  })),
+  ...PINNED_OTHER_PROJECTS.map((project) => ({
+    id: project.id,
+    name: project.name,
+    tagline: project.tagline,
+    long: project.tagline,
+    stack: project.stack,
+    tags: ["Systems", "Coursework"],
+    role: "Team · SYSC 3303",
+    year: "Winter 2026",
+    repo: project.repoUrl,
+  })),
+];
+
+const EDUCATION = [
+  {
+    school: "Carleton University",
+    degree: "B.Eng. Software Engineering (Co-op)",
+    gpa: "3.6 / 4.0",
+    period: "2023 – 2028",
+    where: "Ottawa, ON",
+    clearance: "Reliability Status",
+    coursework: [
+      "Database Management Systems",
+      "Algorithms & Data Structures",
+      "Real-Time Concurrent Systems",
+      "Operating Systems",
+      "Software Architecture & Design",
+      "Programming Languages",
+      "OO Software Development",
+      "Computer Organization & Architecture",
+      "Linear Algebra",
+    ],
+  },
+];
+
+Object.assign(window, {
+  ME,
+  FEATURED_PROJECTS,
+  EXPERIENCE,
+  VOLUNTEERING,
+  SKILLS,
+  PINNED_OTHER_PROJECTS,
+  CONTRIB,
+  fetchGitHubContributions,
+  fetchGitHubRepos,
+  PROJECTS,
+  EDUCATION,
+});
+
+fetchGitHubContributions();
+fetchGitHubRepos();

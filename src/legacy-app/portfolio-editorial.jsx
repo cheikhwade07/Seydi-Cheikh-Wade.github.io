@@ -1,9 +1,9 @@
 import React from 'react';
-const { ME, PROJECTS, SKILLS, CONTRIB } = window;
+const { ME, PROJECTS, EXPERIENCE, VOLUNTEERING, EDUCATION, SKILLS, CONTRIB } = window;
 // portfolio-editorial.jsx — minimal Swiss-grid editorial direction.
 // Cream paper, large serif name, restrained type, recruiter-safe.
 
-const { useState: useStateE } = React;
+const { useState: useStateE, useEffect: useEffectE } = React;
 
 function EditorialTheme({ accent, showGithub, showNow }) {
   const paper = "#F5F1EA";
@@ -110,6 +110,18 @@ function EditorialTheme({ accent, showGithub, showNow }) {
     .e-foot{padding:32px 0 60px;display:flex;justify-content:space-between;font-size:12px;color:${mute}}
   `;
 
+  const [contribData, setContribData] = useStateE(() => window.CONTRIB || CONTRIB || []);
+  const [contribTotal, setContribTotal] = useStateE(() => window._contribTotal ?? null);
+  useEffectE(() => {
+    const handler = () => {
+      setContribData([...(window.CONTRIB || CONTRIB || [])]);
+      setContribTotal(window._contribTotal ?? null);
+    };
+    if (window._contribTotal !== undefined) handler();
+    window.addEventListener("contrib-loaded", handler);
+    return () => window.removeEventListener("contrib-loaded", handler);
+  }, []);
+
   return (
     <div className="e-root">
       <style>{css}</style>
@@ -134,14 +146,14 @@ function EditorialTheme({ accent, showGithub, showNow }) {
               style={{width:'100%',aspectRatio:'4/5',marginBottom:24,display:'block',background:rule,border:`1px solid ${rule}`}}
               placeholder="Drop your headshot here"></image-slot>
             <p className="e-blurb">
-              Hey — I'm Cheikh. Third-year software engineering at Carleton, building
-              <b>&nbsp;applied AI&nbsp;</b> and the full-stack scaffolding around it.
+              Hey — I'm Cheikh. Third-year software engineering at Carleton. I've shipped
+              <b>&nbsp;ML for government&nbsp;</b> and built RAG pipelines at hackathons.
             </p>
             <div className="e-info">
               <div className="e-row row"><span>Location</span><b>Ottawa, ON</b></div>
-              <div className="e-row row"><span>Program</span><b>B.Eng. SE · Year 3 / 5</b></div>
+              <div className="e-row row"><span>Program</span><b>B.Eng. SE · Carleton</b></div>
               <div className="e-row row"><span>Focus</span><b>AI · Full-stack</b></div>
-              <div className="e-row row"><span>Co-op</span><b>StatCan · Summer 26</b></div>
+              <div className="e-row row"><span>Co-op</span><b>StatCan · 2026</b></div>
             </div>
           </div>
         </section>
@@ -154,7 +166,7 @@ function EditorialTheme({ accent, showGithub, showNow }) {
               <span className="m">Updated this week</span>
             </div>
             <div className="e-now">
-              {ME.now.map((n, i) => (
+              {(ME.now || []).map((n, i) => (
                 <div key={i} className="e-now-c">
                   <div className="k">Now / 0{i+1}</div>
                   <div className="v">"{n}"</div>
@@ -168,7 +180,7 @@ function EditorialTheme({ accent, showGithub, showNow }) {
           <div className="e-sec-h">
             <span className="n">02.</span>
             <h2 className="t">Selected projects</h2>
-            <span className="m">{PROJECTS.length} · 2024 – 2026</span>
+            <span className="m">{PROJECTS.length} · 2025 – 2026</span>
           </div>
           <div>
             {PROJECTS.map((p, i) => (
@@ -192,7 +204,7 @@ function EditorialTheme({ accent, showGithub, showNow }) {
           <div className="e-sec-h">
             <span className="n">03.</span>
             <h2 className="t">Experience</h2>
-            <span className="m">Work + studies</span>
+            <span className="m">Work</span>
           </div>
           <div className="e-exp">
             {EXPERIENCE.map((e, i) => (
@@ -209,6 +221,45 @@ function EditorialTheme({ accent, showGithub, showNow }) {
         <section className="e-sec">
           <div className="e-sec-h">
             <span className="n">04.</span>
+            <h2 className="t">Volunteering</h2>
+            <span className="m">Community</span>
+          </div>
+          <div className="e-exp">
+            {VOLUNTEERING.map((e, i) => (
+              <div key={i} className="e-exp-c">
+                <h3>{e.role}</h3>
+                <div className="o">{e.org}</div>
+                <div className="w">{e.period} · {e.where}</div>
+                <ul>{e.bullets.map((b, j) => <li key={j}>{b}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="e-sec">
+          <div className="e-sec-h">
+            <span className="n">05.</span>
+            <h2 className="t">Education</h2>
+            <span className="m">School</span>
+          </div>
+          <div className="e-exp">
+            {EDUCATION.map((ed, i) => (
+              <div key={i} className="e-exp-c">
+                <h3>{ed.degree}</h3>
+                <div className="o">{ed.school}</div>
+                <div className="w">{ed.period} · {ed.where} · GPA {ed.gpa}</div>
+                <ul>
+                  <li>Coursework: {ed.coursework.join(", ")}.</li>
+                  <li>{ed.clearance} security clearance.</li>
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="e-sec">
+          <div className="e-sec-h">
+            <span className="n">06.</span>
             <h2 className="t">Toolkit</h2>
             <span className="m">Things I reach for</span>
           </div>
@@ -225,17 +276,17 @@ function EditorialTheme({ accent, showGithub, showNow }) {
         {showGithub && (
           <section className="e-sec">
             <div className="e-sec-h">
-              <span className="n">05.</span>
+              <span className="n">07.</span>
               <h2 className="t">Commit pulse</h2>
               <span className="m">Last 52 weeks</span>
             </div>
             <div className="e-gh">
               <div className="e-gh-top">
                 <span>@cheikhwade07</span>
-                <span>847 contributions</span>
+                <span>{contribTotal !== null ? `${contribTotal.toLocaleString()} contributions` : "loading..."}</span>
               </div>
               <div className="e-gh-grid">
-                {CONTRIB.map((week, wi) => (
+                {contribData.map((week, wi) => (
                   <div key={wi} className="e-gh-col">
                     {week.map((d, di) => (
                       <div key={di} className={`e-gh-cell ${d ? 'l'+d : ''}`}></div>
@@ -249,7 +300,7 @@ function EditorialTheme({ accent, showGithub, showNow }) {
 
         <section className="e-cta">
           <h2>Let's make <em>something</em><br/>worth shipping.</h2>
-          <p>Reach out for collaborations, coffee chats, or to talk about AI &amp; full-stack work.</p>
+          <p>Reach out about co-op opportunities, collaborations, or to talk about ML infrastructure and retrieval systems.</p>
           <a className="pri" href={`mailto:${ME.email}`}>Get in touch →</a>
           <a className="sec" href={ME.resumeUrl}>Download résumé</a>
         </section>

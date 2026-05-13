@@ -10,10 +10,8 @@ import './legacy-app/portfolio-editorial.jsx';
 const TWEAK_DEFAULTS = {
   theme: 'heist',
   heistAccent: '#22D3EE',
-  terminalAccent: '#7FFFA8',
-  editorialAccent: '#B2542A',
   showGithub: true,
-  showNow: true,
+  showNow: false,
 };
 
 const {
@@ -28,13 +26,7 @@ const {
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
 
-  const themeMeta = {
-    heist: { label: 'Midnight', accentKey: 'heistAccent', accentOpts: ['#22D3EE', '#67E8F9', '#4FB3FF', '#3DBCEB', '#06B6D4'] },
-    terminal: { label: 'Terminal', accentKey: 'terminalAccent', accentOpts: ['#7FFFA8', '#79C0FF', '#FFB627', '#FF7AB6'] },
-    editorial: { label: 'Editorial', accentKey: 'editorialAccent', accentOpts: ['#B2542A', '#1F4E5F', '#7A5AE0', '#1B998B'] },
-  };
-  const cur = themeMeta[t.theme] || themeMeta.heist;
-  const accent = t[cur.accentKey];
+  const accent = t.heistAccent;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -62,16 +54,15 @@ function App() {
           onChange={(v) => setTweak('theme', v)}
         />
 
-        <TweakSection label={`${cur.label} accent`} />
+        <TweakSection label="Heist accent" />
         <TweakColor
           label="Accent"
           value={accent}
-          options={cur.accentOpts}
-          onChange={(v) => setTweak(cur.accentKey, v)}
+          options={['#22D3EE', '#67E8F9', '#4FB3FF', '#3DBCEB', '#06B6D4']}
+          onChange={(v) => setTweak('heistAccent', v)}
         />
 
         <TweakSection label="Sections" />
-        <TweakToggle label="Show 'Currently'" value={t.showNow} onChange={(v) => setTweak('showNow', v)} />
         <TweakToggle label="Show GitHub grid" value={t.showGithub} onChange={(v) => setTweak('showGithub', v)} />
       </TweaksPanel>
     </>

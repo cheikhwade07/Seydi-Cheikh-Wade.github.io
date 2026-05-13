@@ -1,5 +1,5 @@
 import React from 'react';
-const { ME, PROJECTS, SKILLS, CONTRIB } = window;
+const { ME, PROJECTS, EXPERIENCE, VOLUNTEERING, EDUCATION, SKILLS, CONTRIB } = window;
 // portfolio-terminal.jsx — dev-tool / terminal direction.
 // Monospace, command-palette aesthetic, dark.
 
@@ -134,11 +134,22 @@ function TerminalTheme({ accent, showGithub, showNow }) {
     return () => clearInterval(id);
   }, []);
   const ts = time.toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit',hour12:false});
+  const [contribData, setContribData] = useStateT(() => window.CONTRIB || CONTRIB || []);
+  const [contribTotal, setContribTotal] = useStateT(() => window._contribTotal ?? null);
+  useEffectT(() => {
+    const handler = () => {
+      setContribData([...(window.CONTRIB || CONTRIB || [])]);
+      setContribTotal(window._contribTotal ?? null);
+    };
+    if (window._contribTotal !== undefined) handler();
+    window.addEventListener("contrib-loaded", handler);
+    return () => window.removeEventListener("contrib-loaded", handler);
+  }, []);
 
   const ascii = `  ┌─────────────────────────────────────────┐
   │   /\\\\__/\\\\   cheikh.wade :: portfolio    │
   │  ( o.o  )   carleton soft eng · '28      │
-  │   > ^ <    open to summer '26 interns    │
+  │   > ^ <    co-op @ statistics canada     │
   └─────────────────────────────────────────┘`;
 
   return (
@@ -163,10 +174,10 @@ function TerminalTheme({ accent, showGithub, showNow }) {
           <div className="t-prompt"><b>cheikh@portfolio</b> <em>~</em> $ <em>cat about.md</em></div>
           <h1 className="t-title"><span className="at">#</span> Seydi Cheikh Wade</h1>
           <p className="t-sub">
-            Third-year software engineering student at Carleton, currently obsessed with
-            <span className="hl"> applied AI</span> and <span className="hl">developer tools</span>.
-            I like building things end-to-end — the kind of project that wouldn't exist if I didn't
-            write both the inference code and the button it sits behind.
+            Third-year software engineering at Carleton. I've deployed
+            <span className="hl"> ML systems</span> for a federal government client and built
+            <span className="hl"> RAG pipelines</span> at hackathons. Currently on co-op at
+            Statistics Canada, working on data infrastructure.
           </p>
           <div className="t-tags">
             <span className="t-tag on">AI / ML</span>
@@ -178,10 +189,10 @@ function TerminalTheme({ accent, showGithub, showNow }) {
           </div>
 
           <div className="t-statline">
-            <div className="t-stat"><div className="k">uptime</div><div className="v">2.5 <b>yrs</b></div></div>
-            <div className="t-stat"><div className="k">repos</div><div className="v">12 <b>public</b></div></div>
+            <div className="t-stat"><div className="k">co-ops</div><div className="v">2 <b>federal</b></div></div>
+            <div className="t-stat"><div className="k">hackathons</div><div className="v">2 <b>wins</b></div></div>
             <div className="t-stat"><div className="k">stack</div><div className="v">py · ts · java</div></div>
-            <div className="t-stat"><div className="k">status</div><div className="v"><b>● shipping</b></div></div>
+            <div className="t-stat"><div className="k">status</div><div className="v"><b>● on co-op</b></div></div>
           </div>
         </section>
 
@@ -189,7 +200,7 @@ function TerminalTheme({ accent, showGithub, showNow }) {
           <section className="t-sec">
             <h2><b>$</b> tail -f ~/.now <span className="meta"># {ts} EST</span></h2>
             <div className="t-now">
-              {ME.now.map((n, i) => <div key={i} className="t-now-c"><p>{n}</p></div>)}
+              {(ME.now || []).map((n, i) => <div key={i} className="t-now-c"><p>{n}</p></div>)}
             </div>
           </section>
         )}
@@ -226,6 +237,35 @@ function TerminalTheme({ accent, showGithub, showNow }) {
         </section>
 
         <section className="t-sec">
+          <h2><b>$</b> cat volunteering.md</h2>
+          <div className="t-tl">
+            {VOLUNTEERING.map((e, i) => (
+              <div key={i} className="t-tle">
+                <h3>{e.role} <span className="o">@ {e.org}</span></h3>
+                <div className="when">{e.period} · {e.where}</div>
+                <ul>{e.bullets.map((b, j) => <li key={j}>{b}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="t-sec">
+          <h2><b>$</b> cat education.json</h2>
+          <div className="t-tl">
+            {EDUCATION.map((ed, i) => (
+              <div key={i} className="t-tle">
+                <h3>{ed.degree} <span className="o">@ {ed.school}</span></h3>
+                <div className="when">{ed.period} · {ed.where} · GPA {ed.gpa}</div>
+                <ul>
+                  <li>Coursework: {ed.coursework.join(", ")}.</li>
+                  <li>{ed.clearance} security clearance.</li>
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="t-sec">
           <h2><b>$</b> cat skills.json</h2>
           <div className="t-skills">
             {SKILLS.map(s => (
@@ -245,10 +285,10 @@ function TerminalTheme({ accent, showGithub, showNow }) {
             <div className="t-gh">
               <div className="t-gh-top">
                 <span>@cheikhwade07</span>
-                <span><b>847</b> contributions in the last year</span>
+                <span><b>{contribTotal !== null ? contribTotal.toLocaleString() : "..."}</b> contributions in the last year</span>
               </div>
               <div className="t-gh-grid">
-                {CONTRIB.map((week, wi) => (
+                {contribData.map((week, wi) => (
                   <div key={wi} className="t-gh-col">
                     {week.map((d, di) => (
                       <div key={di} className={`t-gh-cell ${d ? 'l'+d : ''}`}></div>
