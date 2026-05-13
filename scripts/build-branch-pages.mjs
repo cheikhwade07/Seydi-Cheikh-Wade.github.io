@@ -26,11 +26,13 @@ if (existsSync(join('dist', 'assets'))) {
 const publicAssets = [
   'ChizuCode.png',
   'CrisisCenterPage.png',
+  'JasmineConseil.png',
   'JasmineDiagram.png',
   'portrait.png',
-  'Resume.png',
+  'Resume.jpg',
   'SeydiCheikhWade_resume.pdf',
   'Soki.png',
+  'StatCan.png',
 ];
 
 for (const asset of publicAssets) {

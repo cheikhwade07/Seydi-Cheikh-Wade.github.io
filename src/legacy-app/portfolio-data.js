@@ -5,7 +5,7 @@ const ME = {
   short: "Cheikh",
   role: "Software Engineering · Carleton '28",
   blurb:
-    "I care about building software that touches people's lives — and learning everything I can along the way. I've failed plenty, but I don't quit. From deploying ML for a government customs agency to winning hackathons with RAG pipelines and AI study tools, every project has pulled me deeper into understanding how these systems work, how they break, and how to make them better. That drive shows up in everything I build.",
+    "I like building software that matters to real people, and I keep trying to understand more of the stack behind it. I've failed plenty, but I don't quit. Shipping ML for a customs agency and building hackathon tools under pressure made me more curious about how systems work, where they break, and how to make them sturdier.",
   location: "Ottawa, ON",
   email: "seyiwade@cmail.carleton.ca",
   phone: "+1 (514) 431-3541",
@@ -13,13 +13,13 @@ const ME = {
   github: "https://github.com/cheikhwade07",
   linkedin: "https://www.linkedin.com/in/seydi-c",
   resumeUrl: "SeydiCheikhWade_resume.pdf",
-  resumePreview: "Resume.png",
+  resumePreview: "Resume.jpg",
   statusLines: [
-    "Open-Source Statistical Programmer @ Statistics Canada",
-    "Ex Junior Data Scientist @ Jasmine Conseil",
-    "Software Engineer (Volunteer) @ Develop for Good",
-    "2x Hackathon Winner",
-    "B.Eng. Software Engineering @ Carleton University",
+    { text: "Open-Source Statistical Programmer", org: "Statistics Canada" },
+    { text: "Ex Junior Data Scientist", org: "Jasmine Conseil" },
+    { text: "Software Engineer (Volunteer)", org: "Develop for Good" },
+    { text: "2x Hackathon Winner", org: null },
+    { text: "B.Eng. Software Engineering", org: "Carleton University" },
   ],
 };
 
@@ -29,7 +29,7 @@ const FEATURED_PROJECTS = [
     name: "ChizuCode",
     tagline: "A RAG pipeline that teaches your codebase back to you.",
     description:
-      "Onboarding onto a new codebase is slow — you don't know what files do, how they connect, or where to start asking questions. ChizuCode ingests a GitHub repo, generates dual embeddings (Gemini for summaries, Voyage AI for raw code), stores vectors in pgvector, and clusters files into semantic domains so you can explore visually. Scoped retrieval lets you ask questions grounded in the actual code. Won MLH Best Use of Gemini API at ConHacks 2026.",
+      "Onboarding onto a new codebase is slow — you don't know what files do, how they connect, or where to start asking questions. ChizuCode ingests a GitHub repo, generates dual embeddings (Gemini for summaries, Voyage AI for raw code), stores vectors in pgvector, and clusters files into semantic domains so you can explore visually. Scoped retrieval lets you ask questions grounded in the actual code.",
     stack: ["Next.js", "FastAPI", "PostgreSQL", "pgvector", "Gemini API", "Voyage AI"],
     award: "MLH · Best Use of Gemini API",
     hackathon: "ConHacks 2026",
@@ -44,7 +44,7 @@ const FEATURED_PROJECTS = [
     name: "Soki",
     tagline: "AI study platform — upload notes, get flashcards, retain more.",
     description:
-      "Students re-read notes passively because making good flashcards is tedious. Soki takes a PDF upload, parses it, sends structured prompts to Gemini, and returns flashcards and quizzes tailored to the source material. An FSRS-based scheduler adapts review intervals to how well you actually retain each card. Won 1st place (AI Automation) and runner-up (Best Language Cognition) at Carleton MindHack — 36-hour sprint, team of 3.",
+      "Students re-read notes passively because making good flashcards is tedious. Soki takes a PDF upload, parses it, sends structured prompts to Gemini, and returns flashcards and quizzes tailored to the source material. An FSRS-based scheduler adapts review intervals to how well you actually retain each card.",
     stack: ["Next.js", "FastAPI", "PostgreSQL", "Gemini API", "FSRS"],
     award: "1st Place · AI Automation",
     hackathon: "Carleton MindHack 2026",
@@ -58,30 +58,10 @@ const FEATURED_PROJECTS = [
 
 const EXPERIENCE = [
   {
-    id: "jasmine",
-    role: "Junior Data Scientist (Co-op)",
-    org: "Jasmine Conseil",
-    context: "Federal Government Client",
-    period: "Jun – Sep 2025",
-    where: "Laval, QC",
-    description:
-      "The Senegalese Customs Administration needed a way to automate control circuit assignment across 10,000+ import declarations — a process tied to 40% of national budget operations. I built the ML prediction system end-to-end: benchmarked 5+ classifiers, selected MLPClassifier+PCA (ROC-AUC 0.99, F1 0.86 on imbalanced data), and deployed it as a FastAPI REST API on a DigitalOcean Linux VM with firewalld rules and a MuleSoft Anypoint proxy. The prototype I built is now being used to develop a production system for Senegalese Customs.",
-    stack: ["Python", "scikit-learn", "FastAPI", "DigitalOcean", "MuleSoft"],
-    image: null,
-    diagramLabels: {
-      source: "Système GAINDE",
-      sourceData: "Déclaration de marchandise\n(format JSON)",
-      proxy: "Anypoint\n(Proxy API)",
-      api: "API\n(VM DigitalOcean)",
-      model: "Modèle de\nmachine learning",
-      output: "Prédiction de risque\n(format JSON)",
-    },
-    repoUrl: "https://github.com/cheikhwade07/customs-risk-api-dashboard",
-  },
-  {
     id: "statcan",
     role: "Open-Source Statistical Programmer (Co-op)",
     org: "Statistics Canada",
+    logo: "StatCan.png",
     context: "Federal Government",
     period: "May – Aug 2026",
     where: "Ottawa, ON",
@@ -89,8 +69,31 @@ const EXPERIENCE = [
     description:
       "Currently contributing to the migration of legacy SAS programs to Python, modernizing data processing workflows for a federal statistical agency. Building and maintaining ETL pipelines for large-scale statistical data, ensuring integrity across transformation stages for downstream analysis.",
     stack: ["Python", "pandas", "SAS", "ETL"],
-    image: null,
     repoUrl: null,
+  },
+  {
+    id: "jasmine",
+    role: "Junior Data Scientist (Co-op)",
+    org: "Jasmine Conseil",
+    logo: "JasmineConseil.png",
+    context: "Federal Government Client",
+    period: "Jun – Sep 2025",
+    where: "Laval, QC",
+    current: false,
+    description:
+      "The Senegalese Customs Administration needed a way to automate control circuit assignment across 10,000+ import declarations — a process tied to 40% of national budget operations. I built the ML prediction system end-to-end: benchmarked 5+ classifiers, selected MLPClassifier+PCA (ROC-AUC 0.99, F1 0.86 on imbalanced data), and deployed it as a FastAPI REST API on a DigitalOcean Linux VM with firewalld rules and a MuleSoft Anypoint proxy. The prototype I built is now being used to develop a production system for Senegalese Customs.",
+    stack: ["Python", "scikit-learn", "FastAPI", "DigitalOcean", "MuleSoft"],
+    hasDiagram: true,
+    diagramLabels: {
+      source: "Système GAINDE",
+      sourceData: "Déclaration de\nmarchandise\n(format JSON)",
+      proxy: "Anypoint\n(Proxy API)",
+      receivedData: "Déclaration de\nmarchandise\n(format JSON)",
+      api: "API\n(VM DigitalOcean)",
+      model: "Modèle de\nmachine learning",
+      output: "Prédiction de risque\n(format JSON)",
+    },
+    repoUrl: "https://github.com/cheikhwade07/customs-risk-api-dashboard",
   },
 ];
 
@@ -118,21 +121,35 @@ const SKILLS = [
   { group: "Infra & Cloud", items: ["PostgreSQL", "pgvector", "Docker", "Linux CLI", "DigitalOcean", "MuleSoft", "Git"] },
 ];
 
-const PINNED_OTHER_PROJECTS = [
-  {
-    id: "drone",
-    name: "Firefighting Drone Swarm",
-    tagline: "Distributed drone scheduler over UDP — with fault recovery.",
-    stack: ["Java", "UDP", "Concurrency", "State Machines"],
-    repoUrl: "https://github.com/cheikhwade07/Firefighting-Drone-Swarm",
-  },
-];
-
 let CONTRIB = Array.from({ length: 52 }, () => Array.from({ length: 7 }, () => 0));
 
-function normalizeRepoUrl(url) {
-  return String(url || "").replace(/\/$/, "").toLowerCase();
-}
+const OTHER_PROJECTS = [
+  {
+    id: "drone",
+    name: "Firefighting-Drone-Swarm",
+    tagline: "SYSC 3303A - RealTime Concurrent Systems - Winter 2026",
+    language: "Java",
+    stars: 1,
+    repoUrl: "https://github.com/cheikhwade07/Firefighting-Drone-Swarm",
+  },
+  {
+    id: "relax",
+    name: "relax-query-processor",
+    tagline:
+      "A mini relational algebra engine inspired by the Relax system, built in Java in the scope of COMP 3005 (Database Management Systems) at Carleton University.",
+    language: "Java",
+    stars: 1,
+    repoUrl: "https://github.com/cheikhwade07/relax-query-processor",
+  },
+  {
+    id: "uno",
+    name: "Multiplayer-UNO-Game-Java-MVC-Architecture",
+    tagline: "Multiplayer UNO with MVC architecture and socket networking.",
+    language: "Java",
+    stars: 1,
+    repoUrl: "https://github.com/cheikhwade07/Multiplayer-UNO-Game-Java-MVC-Architecture",
+  },
+];
 
 async function fetchGitHubContributions(username = "cheikhwade07") {
   try {
@@ -174,75 +191,21 @@ async function fetchGitHubContributions(username = "cheikhwade07") {
   }
 }
 
-async function fetchGitHubRepos(username = "cheikhwade07") {
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=30`
-    );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const repos = await response.json();
-    const excludeUrls = [
-      ...FEATURED_PROJECTS.map((p) => p.repoUrl),
-      ...PINNED_OTHER_PROJECTS.map((p) => p.repoUrl),
-      ...EXPERIENCE.filter((e) => e.repoUrl).map((e) => e.repoUrl),
-    ].map(normalizeRepoUrl);
-    const filtered = repos
-      .filter((repo) => (
-        !repo.fork &&
-        repo.description &&
-        !excludeUrls.includes(normalizeRepoUrl(repo.html_url))
-      ))
-      .slice(0, 6)
-      .map((repo) => ({
-        id: repo.name,
-        name: repo.name,
-        tagline: repo.description,
-        language: repo.language,
-        stars: repo.stargazers_count,
-        repoUrl: repo.html_url,
-      }));
-
-    window._otherRepos = filtered;
-    window._reposError = false;
-    window._reposLoaded = true;
-    window.dispatchEvent(new CustomEvent("repos-loaded"));
-  } catch (err) {
-    console.warn("GitHub repos fetch failed:", err);
-    window._otherRepos = [];
-    window._reposError = true;
-    window._reposLoaded = true;
-    window.dispatchEvent(new CustomEvent("repos-loaded"));
-  }
-}
-
-// Legacy aliases keep the terminal/editorial themes available without making
-// them part of the redesign work.
-const PROJECTS = [
-  ...FEATURED_PROJECTS.map((project) => ({
-    id: project.id,
-    name: project.name,
-    tagline: project.tagline,
-    long: project.description,
-    stack: project.stack,
-    tags: [project.hackathon, project.award].filter(Boolean),
-    role: `${project.role} · ${project.hackathon}`,
-    year: project.hackathon.match(/\d{4}/)?.[0] || "2026",
-    repo: project.repoUrl,
-    liveUrl: project.liveUrl,
-    award: project.award,
-  })),
-  ...PINNED_OTHER_PROJECTS.map((project) => ({
-    id: project.id,
-    name: project.name,
-    tagline: project.tagline,
-    long: project.tagline,
-    stack: project.stack,
-    tags: ["Systems", "Coursework"],
-    role: "Team · SYSC 3303",
-    year: "Winter 2026",
-    repo: project.repoUrl,
-  })),
-];
+// Legacy aliases keep terminal/editorial switchable without making them part of
+// the active redesign surface.
+const PROJECTS = FEATURED_PROJECTS.map((project) => ({
+  id: project.id,
+  name: project.name,
+  tagline: project.tagline,
+  long: project.description,
+  stack: project.stack,
+  tags: [project.hackathon, project.award].filter(Boolean),
+  role: `${project.role} · ${project.hackathon}`,
+  year: project.hackathon.match(/\d{4}/)?.[0] || "2026",
+  repo: project.repoUrl,
+  liveUrl: project.liveUrl,
+  award: project.award,
+}));
 
 const EDUCATION = [
   {
@@ -272,13 +235,11 @@ Object.assign(window, {
   EXPERIENCE,
   VOLUNTEERING,
   SKILLS,
-  PINNED_OTHER_PROJECTS,
+  OTHER_PROJECTS,
   CONTRIB,
   fetchGitHubContributions,
-  fetchGitHubRepos,
   PROJECTS,
   EDUCATION,
 });
 
 fetchGitHubContributions();
-fetchGitHubRepos();
