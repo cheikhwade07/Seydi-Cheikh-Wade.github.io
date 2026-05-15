@@ -5,7 +5,7 @@ const ME = {
   short: "Cheikh",
   role: "Software Engineering · Carleton '28",
   blurb:
-    "I like building software that matters to real people, and I keep trying to understand more of the stack behind it. I've failed plenty, but I don't quit. Shipping ML for a customs agency and building hackathon tools under pressure made me more curious about how systems work, where they break, and how to make them sturdier.",
+    "I like building software that matters to real people, and I keep trying to understand more of the stack behind it. Shipping ML for a customs agency and building hackathon tools under pressure made me more curious about how systems work, where they break, and how to make them sturdier.",
   location: "Ottawa, ON",
   email: "seyiwade@cmail.carleton.ca",
   phone: "+1 (514) 431-3541",
@@ -241,5 +241,3 @@ Object.assign(window, {
   PROJECTS,
   EDUCATION,
 });
-
-fetchGitHubContributions();
