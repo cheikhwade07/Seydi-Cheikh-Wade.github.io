@@ -7,7 +7,8 @@ const ME = {
   blurb:
     "I like building software that matters to real people, and I keep trying to understand more of the stack behind it. Shipping ML for a customs agency and building hackathon tools under pressure made me more curious about how systems work, where they break, and how to make them sturdier.",
   location: "Ottawa, ON",
-  email: "seyiwade@cmail.carleton.ca",
+  email: "seydicheikhwade@gmail.com",
+  universityEmail: "seydiwade@cmail.carleton.ca",
   phone: "+1 (514) 431-3541",
   site: "cheikhwade.com",
   github: "https://github.com/cheikhwade07",

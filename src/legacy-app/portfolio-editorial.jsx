@@ -301,7 +301,8 @@ function EditorialTheme({ accent, showGithub, showNow }) {
         <section className="e-cta">
           <h2>Let's make <em>something</em><br/>worth shipping.</h2>
           <p>Reach out about co-op opportunities, collaborations, or to talk about ML infrastructure and retrieval systems.</p>
-          <a className="pri" href={`mailto:${ME.email}`}>Get in touch →</a>
+          <a className="pri" href={`mailto:${ME.email}`}>Gmail · {ME.email}</a>
+          <a className="sec" href={`mailto:${ME.universityEmail}`}>University · {ME.universityEmail}</a>
           <a className="sec" href={ME.resumeUrl}>Download résumé</a>
         </section>
 

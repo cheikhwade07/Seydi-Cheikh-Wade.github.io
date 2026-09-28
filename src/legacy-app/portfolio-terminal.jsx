@@ -304,6 +304,7 @@ function TerminalTheme({ accent, showGithub, showNow }) {
           <h2>Want to <b>collaborate</b>?</h2>
           <p>I read every cold email. Drop me a line — usually back within the day.</p>
           <a className="pri" href={`mailto:${ME.email}`}>{ME.email}</a>
+          <a className="sec" href={`mailto:${ME.universityEmail}`}>{ME.universityEmail}</a>
           <a className="sec" href={ME.linkedin}>LinkedIn ↗</a>
         </section>
 
