@@ -13,7 +13,7 @@ const ME = {
   github: "https://github.com/cheikhwade07",
   linkedin: "https://www.linkedin.com/in/seydi-c",
   resumeUrl: "SeydiCheikhWade_resume.pdf",
-  resumePreview: "Resume.jpg",
+  resumePreview: "Resume-2028.jpg",
   statusLines: [
     { text: "Open-Source Statistical Programmer", org: "Statistics Canada" },
     { text: "Ex Junior Data Scientist", org: "Jasmine Conseil" },

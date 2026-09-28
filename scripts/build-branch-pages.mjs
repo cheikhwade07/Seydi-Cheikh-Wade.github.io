@@ -30,6 +30,7 @@ const publicAssets = [
   'JasmineDiagram.png',
   'portrait.png',
   'Resume.jpg',
+  'Resume-2028.jpg',
   'SeydiCheikhWade_resume.pdf',
   'Soki.png',
   'StatCan.png',
